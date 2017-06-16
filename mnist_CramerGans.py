@@ -32,7 +32,7 @@ if  __name__ == '__main__':
                         help='weight decay for training')
     parser.add_argument('--maxepoch', type=int, default=12800000, metavar='N',
                         help='number of epochs to train (default: 10)')
-    parser.add_argument('--lr', type=float, default = 0.001, metavar='LR',
+    parser.add_argument('--lr', type=float, default = 0.0001, metavar='LR',
                         help='learning rate (default: 0.01)')
     parser.add_argument('--momentum', type=float, default=0.9, metavar='M',
                         help='SGD momentum (default: 0.5)')
@@ -44,19 +44,19 @@ if  __name__ == '__main__':
     parser.add_argument('--cuda', action='store_false', default=True,
                         help='enables CUDA training')
     
-    parser.add_argument('--save_freq', type=int, default= 5000, metavar='N',
+    parser.add_argument('--save_freq', type=int, default= 200, metavar='N',
                         help='how frequent to save the model')
-    parser.add_argument('--display_freq', type=int, default= 200, metavar='N',
+    parser.add_argument('--display_freq', type=int, default= 100, metavar='N',
                         help='plot the results every {} batches')
     
-    parser.add_argument('--batch_size', type=int, default=2, metavar='N',
+    parser.add_argument('--batch_size', type=int, default=4, metavar='N',
                         help='batch size.')
 
     parser.add_argument('--gp_lambda', type=int, default=10, metavar='N',
                         help='the channel of each image.')
     parser.add_argument('--noise_dim', type=int, default=10, metavar='N',
                         help='dimension of gaussian noise.')
-    parser.add_argument('--ncritic', type=int, default= 1, metavar='N',
+    parser.add_argument('--ncritic', type=int, default= 5, metavar='N',
                         help='the channel of each image.')
     parser.add_argument('--save_folder', type=str, default= 'tmp_images', metavar='N',
                         help='folder to save the temper images.')

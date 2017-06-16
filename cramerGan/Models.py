@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 
+activation = nn.LeakyReLU
+
 class MLP_G(nn.Module):
     def __init__(self, input_dim, noise_dim, num_chan, hid_dim, ngpu=1):
         super(MLP_G, self).__init__()
@@ -11,13 +13,13 @@ class MLP_G(nn.Module):
         main = nn.Sequential(
             # Z goes into a linear of size: hid_dim
             nn.Linear(noise_dim, hid_dim),
-            nn.ReLU(True),
+            activation(),
             nn.Linear(hid_dim, hid_dim),
-            nn.ReLU(True),
+            activation(),
             nn.Linear(hid_dim, hid_dim),
-            nn.ReLU(True),
+            activation(),
             nn.Linear(hid_dim, hid_dim),
-            nn.ReLU(True),
+            activation(),
             nn.Linear(hid_dim, num_chan * input_dim * input_dim),
             nn.Sigmoid()
         )
@@ -43,13 +45,13 @@ class MLP_D(nn.Module):
         main = nn.Sequential(
             # Z goes into a linear of size: hid_dim
             nn.Linear(num_chan * input_dim * input_dim, hid_dim),
-            nn.ReLU(True),
+            activation(),
             nn.Linear(hid_dim, hid_dim),
-            nn.ReLU(True),
+            activation(),
             nn.Linear(hid_dim, hid_dim),
-            nn.ReLU(True),
+            activation(),
             nn.Linear(hid_dim, hid_dim),
-            nn.ReLU(True),
+            activation(),
             nn.Linear(hid_dim, out_dim),
 
         )
